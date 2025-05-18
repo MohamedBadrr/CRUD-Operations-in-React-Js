@@ -62,7 +62,7 @@ function App() {
               {formInputsList.map((input)=>{
                   return <div className="flex flex-col gap-2">
                       <label htmlFor={input.label}>{input.label}<span className="text-red-500">*</span></label>
-                      <Input value={""} onChange={changeHandler} id={input.name} name={input.name} type={input.type} />
+                      <Input value={product[input.name]} onChange={changeHandler} id={input.name} name={input.name} type={input.type} />
                   </div>
               })}
             <div>
