@@ -8,7 +8,7 @@ type Props ={
 const ProductCard = ({product}: Props) => {
   return (
     <div className="max-w-sm md:max-w-lg mx-auto md:mx-0 rounded-md border-1 border-gray-300 m-5 p-3 flex flex-col gap-3">
-      <Image imgURL={product.imageURL} altText={product.title} className="rounded-md mb-2"/>
+      <Image imgURL={product.imageURL} altText={product.title} className="rounded-md mb-2 h-[210px]"/>
       <h3 className="font-semibold">{product.title}</h3>
       <p className="text-sm font-light text-gray-600 mb-[15px]">{txtSlicer(product.description)}</p>
 
