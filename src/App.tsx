@@ -10,6 +10,7 @@ import { productValidationSchema } from "./validations/productValidation";
 import ErrorMessage from "./componets/ErrorMessage";
 import CircleColor from "./componets/CircleColor";
 import Select from "./componets/ui/Select";
+import Image from "./componets/Image";
 
 function App() {
   const initialProduct: IProduct = {
@@ -26,6 +27,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isCloseOpen, setIsCloseOpen] = useState(false);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [product, setProduct] = useState<IProduct>(initialProduct);
   const [products, setProducts] = useState<IProduct[]>(productList);
   const [productToEdit, setProductToEdit] = useState<IProduct>(initialProduct);
@@ -72,6 +74,10 @@ function App() {
   function closeEdit() {
     setIsEditOpen(false);
   }
+
+  const closeDetails = () => {
+    setIsDetailsOpen(false);
+  };
 
   const cancelHandler = (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -177,6 +183,7 @@ function App() {
                 index={products.indexOf(product)}
                 setEditTempColors={setEditTempColors}
                 setIsCloseOpen={setIsCloseOpen}
+                setIsDetailsOpen={setIsDetailsOpen}
               />
             );
           })
@@ -376,6 +383,54 @@ function App() {
               >
                 Cancel
               </Button>
+            </div>
+          </div>
+        </Modal>
+
+        {/* details model  */}
+        <Modal close={closeDetails} title="" isOpen={isDetailsOpen}>
+          <div className="flex items-start justify-start flex-col">
+            <Image
+              imgURL={products[indexEdit].imageURL}
+              altText="Product Image"
+              className="rounded-md"
+            />
+            <div className="space-x-2 mt-8">
+              <p className="mt-[-20px] mb-[20px] text-[25px] font-bold text-indigo-700">
+                {products[indexEdit].title}
+              </p>
+
+              <p className=" mb-[20px] text-[17px] text-[gray] ">
+                {products[indexEdit].description}
+              </p>
+
+              <div className="flex justify-between items-center my-4">
+                <p className="text-md text-black font-semibold">
+                  ${products[indexEdit].price}
+                </p>
+                <div className="flex items-center justify-center gap-2">
+                  <p className="text-sm text-black">
+                    {products[indexEdit].category.name}
+                  </p>
+                  <Image
+                    imgURL={products[indexEdit].category.imageURL}
+                    altText={products[indexEdit].category.name}
+                    className="h-10 w-10 cursor-pointer rounded-full object-bottom "
+                  />
+                </div>
+              </div>
+              <div className="flex space-x-2">
+                {products[indexEdit].colors.length > 0 ? (
+                  products[indexEdit].colors.map((color) => (
+                    <div
+                      style={{ backgroundColor: color }}
+                      className="h-5 w-5 rounded-[50%] cursor-pointer"
+                    ></div>
+                  ))
+                ) : (
+                  <p className="text-gray-700 ">No colors available.</p>
+                )}
+              </div>
             </div>
           </div>
         </Modal>

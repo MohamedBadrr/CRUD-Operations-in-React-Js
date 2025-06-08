@@ -1,12 +1,13 @@
+import type { ImgHTMLAttributes } from "react";
 
-type Props ={
+interface Props extends ImgHTMLAttributes<HTMLImageElement>{
     imgURL: string;
     altText: string;
     className? : string;
 }
-const Image = ({imgURL , altText , className}: Props) => {
+const Image = ({imgURL , altText , className , ...rest}: Props) => {
   return (
-    <img src={imgURL} alt={altText} className={className}/>
+    <img {...rest} src={imgURL} alt={altText} className={className} />
   )
 };
 
