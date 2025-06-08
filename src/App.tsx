@@ -11,6 +11,7 @@ import ErrorMessage from "./componets/ErrorMessage";
 import CircleColor from "./componets/CircleColor";
 import Select from "./componets/ui/Select";
 import Image from "./componets/Image";
+import toast from "react-hot-toast";
 
 function App() {
   const initialProduct: IProduct = {
@@ -115,6 +116,14 @@ function App() {
     ]);
     setProduct(initialProduct);
     setIsOpen(false);
+        toast("Product Added Successfully", {
+      duration: 2000,
+      position: "top-center",
+      style: {
+        backgroundColor:"green",
+        color:"white"
+      },
+    });
   };
 
   const submitEditHandler = (event: FormEvent<HTMLFormElement>): void => {
@@ -141,6 +150,14 @@ function App() {
     };
     setProducts(updatedProducts);
     console.log("Done");
+        toast("Product Updated Successfully", {
+      duration: 2000,
+      position: "top-center",
+      style: {
+        backgroundColor:"gray",
+        color:"white"
+      },
+    });
 
     setIsEditOpen(false);
   };
@@ -152,7 +169,14 @@ function App() {
   const handleDelete = () => {
     setProducts((prev) => prev.filter((_, index) => index !== indexEdit));
     setIsCloseOpen(false);
-    console.log("Delete product", products);
+    toast("Product Deleted Successfully", {
+      duration: 2000,
+      position: "top-center",
+      style: {
+        backgroundColor:"red",
+        color:"white"
+      },
+    });
   };
 
   return (

@@ -2,6 +2,7 @@ import type { IProduct } from "../interfaces";
 import { txtSlicer } from "../utils/txtSlicer";
 import Image from "./Image";
 import Button from "./ui/Button";
+
 type Props = {
   product: IProduct;
   setProductToEdit: (product: IProduct) => void;
@@ -19,7 +20,6 @@ const ProductCard = ({ product, setProductToEdit, setIsEditOpen , setIndexEdit ,
     setIndexEdit(index)
     console.log(index);
     setEditTempColors(product.colors);
-    
   }
 
   const handleDelete = () => {
