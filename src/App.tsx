@@ -357,7 +357,9 @@ function App() {
         {/* Remove Model  */}
         <Modal close={closeRemoveModal} title="" isOpen={isCloseOpen}>
           <div className="flex items-center justify-center flex-col">
-            <p className="mt-[-20px] mb-[20px] text-[25px] font-semibold">Delete Product</p>
+            <p className="mt-[-20px] mb-[20px] text-[25px] font-semibold">
+              Delete Product
+            </p>
             <p className="text-sm/6 text-gray-600 mt-[-10px] ">
               Are you sure you want to delete this product?
             </p>
