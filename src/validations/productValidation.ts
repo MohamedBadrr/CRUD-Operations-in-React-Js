@@ -3,17 +3,20 @@ export const productValidationSchema = (product: {
   description: string;
   imageURL: string;
   price: string;
+  colors: string[];
 }) => {
   const errors: {
     title: string;
     description: string;
     imageURL: string;
     price: string;
+    colors: string;
   } = {
     title: "",
     description: "",
     imageURL: "",
     price: "",
+    colors: "",
   };
 
   if (
@@ -39,6 +42,10 @@ export const productValidationSchema = (product: {
 
   if (!product.price.trim() || isNaN(Number(product.price))) {
     errors.price = "Price must be a valid number.";
+  }
+
+  if(product.colors.length === 0) {
+    errors.colors = "At least one color must be selected.";
   }
 
   return errors;

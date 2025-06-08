@@ -19,6 +19,7 @@ export default function Modal({close , isOpen , title , children}:IProps) {
         className="relative z-10 focus:outline-none bg-red-500 flex items-center justify-center w-full"
         onClose={close}
       >
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm  duration-300 ease-out data-closed:opacity-0">
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
@@ -27,7 +28,7 @@ export default function Modal({close , isOpen , title , children}:IProps) {
             >
               <DialogTitle
                 as="h3"
-                className="text-[30px] font-medium text-black "
+                className="text-[20px] font-medium text-black "
               >
                 {title}
               </DialogTitle>
@@ -39,6 +40,7 @@ export default function Modal({close , isOpen , title , children}:IProps) {
               </div>
             </DialogPanel>
           </div>
+        </div>
         </div>
       </Dialog>
     </>
